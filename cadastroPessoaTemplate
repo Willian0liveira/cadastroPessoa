@@ -1,0 +1,69 @@
+import 'dart:io';
+
+void main() {
+  PessoaCliente cliente = PessoaCliente();
+  cliente.cadastroCliente();
+}
+
+class PessoaCliente {
+  String? nomePessoaCliente;
+  int? idadePessoaCliente;
+  String? emailPessoaCliente;
+  RegExp regex = RegExp(r'^[a-z0-9-._]+@[a-z0-9]+.[a-z0-9]+.?[a-z0-9]+?$');
+  String? sexoPessoaCliente;
+
+  void cadastroCliente() {
+    print(
+        "Olá, para iniciarmos o seu cadastro, por favor, nos diga o seu nome");
+    for (int a = 0; a <= a; a++) {
+      nomePessoaCliente = stdin.readLineSync();
+      if (nomePessoaCliente!.isNotEmpty) {
+        for (int i = 0; i <= i; i++) {
+          print(
+              "Qual é o seu gênero ? Digite o número correspondente a sua escolha");
+          print("(1) - Masculino");
+          print("(2) - Feminimo");
+          print("(3) - Prefiro não dizer ");
+          sexoPessoaCliente = stdin.readLineSync();
+
+          if (sexoPessoaCliente == "1" ||
+              sexoPessoaCliente == "2" ||
+              sexoPessoaCliente == "3") {
+            switch (sexoPessoaCliente) {
+              case "1":
+                print(
+                    "Olá $nomePessoaCliente, seja bem vindo ao nosso programa");
+                break;
+
+              case "2":
+                print(
+                    "Olá $nomePessoaCliente, seja bem vinda ao nosso programa");
+                break;
+
+              case "3":
+                print("Olá $nomePessoaCliente, seu acesso está liberado !");
+                break;
+            }
+            break;
+          } else {
+            print("Precisamos de uma resposta válida");
+          }
+        }
+        print("Agora para continuarmos, digite o seu email");
+        for (int i = 0; i <= i; i++) {
+          emailPessoaCliente = stdin.readLineSync();
+          bool matchEmail = regex.hasMatch(emailPessoaCliente!);
+          if (matchEmail == true && emailPessoaCliente!.contains(".")) {
+            print("Obrigado por concluir seu cadastro !");
+            break;
+          } else if (matchEmail == false) {
+            print("email inválido ! Por favor, insira seu email corretamente.");
+          }
+        }
+        break;
+      } else {
+        print("Por favor, insira seu nome para iniciarmos seu cadastro");
+      }
+    }
+  }
+}
